@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'com.de.zookeeper'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+application {
+    mainClass.set("com.de.zookeeper.leaderelection.App")
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.zookeeper:zookeeper:3.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
